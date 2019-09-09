@@ -1,0 +1,3 @@
+A chatting application made with the help of Angular and Bootstrap on the front end, while the back end is made with Node and Express. The core ideea is to use the Socket.io library both on the client and on the server side to allow an event-driven communication between different clients that connect to the server. Also, the application is session-oriented so it does not provide persistent storage.
+
+If you want to use the application download both the client and the server side and run on both of them npm install to install the dependencies present in the package.json file, then run the server side with npm start and the client side with ng serve (if you have Angular cli installed).
