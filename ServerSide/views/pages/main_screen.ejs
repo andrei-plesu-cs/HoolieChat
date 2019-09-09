@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Plesoianu Andrei-Bogdan">
+    <title>Main Screen</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/eff5d0d257.js"></script>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+</head>
+<body>
+    <!-- The navigation bar from the top of the screen -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">HoolieChat</a>
+
+            <!-- info about the current user -->
+            <div class="navbar-user-info mr-auto">
+                <img src="/images/profile-pic.jpg" alt="Profile pic" class="rounded-circle">
+            </div>
+
+            <!-- Links -->
+            <div class="navbar navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled" style="font-weight: bold; margin-right: 20px;"><%= username%></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Create</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/login">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main screen area -->
+    <div class="container-fluid" style="margin-top: 60px;">
+        <div class="row">
+
+            <!-- active people area -->
+            <div class="col-lg-5">
+                <div class="conversations-area">
+                    <div class="people-header">
+                        <span class="active">People</span>
+                        <span>Conversations</span>
+                    </div>
+                </div>
+
+                <div class="show-info">
+
+                    <% if(clients.length > 0) { %>
+                        <% clients.forEach(client => { %>
+                            <div class="under-section">
+                                <div class="row">
+                                    <div class="col-lg-3 text-right">
+                                        <img src="/images/profile-pic.jpg" class="rounded-circle"/>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="user-info">
+                                            <span><%= client.username%></span><br />
+                                            <small style="color: grey;">
+                                                <i class="far fa-hourglass" style="margin-right: 8px"></i>
+                                                Joined 12 minutes ago
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="buttons-section">
+                                    <button class="btn btn-sm add">Send Request</button>
+                                    <button class="btn btn-sm remove">Delete user</button>
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <div class="under-section my-section">
+                            <p id="no_user">There are no users connected yet... there has to be something wrong with them not with us</p>
+                        </div>
+                    <% } %>
+
+                </div>
+
+            </div>
+
+            <!-- conversation area -->
+            <div class="col-lg-7">
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- This right here is for ejs variables -->
+    <span style="display: none;" id="username_span"><%=username %></span>
+
+    <script src="/scripts/main-screen.js"></script>
+    
+</body>
+</html>

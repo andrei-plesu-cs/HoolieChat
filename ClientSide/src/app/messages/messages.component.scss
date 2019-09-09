@@ -1,0 +1,100 @@
+
+.main-messages {
+
+    .header {
+        height: 15%;
+        width: 100%;
+        border-bottom: 2px solid black;
+        padding: 10px;
+
+        img {
+            width: 45px;
+            height: 45px;
+        }
+
+        .my-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            p {
+                color: black;
+            }
+        }
+
+    }
+
+    .body {
+        height: 65% !important;
+        width: 100%;
+        border-left: 1px solid #0486db;
+        border-right: 1px solid #0486db;
+        overflow-y: auto;
+    }
+
+    .footer {
+        padding: 10px;
+        height: 20%;
+        width: 100%;
+        background-color: lightskyblue;
+
+        input {
+            border-color: #0486db;
+            color: #0486db;
+            background-color: #fff;
+        }
+
+        ::placeholder {
+            color: lighten(#0486db, 15%);
+        }
+
+        button {
+            font-weight: bold;
+            color: #fff;
+            background-color: #0486db;
+        }
+
+    }
+
+    .inner-container {
+        width: 60%;
+        margin-bottom: -10px;
+        padding: 15px;
+
+    }
+
+    .right-container {
+
+        margin-left: 40% !important;
+
+        .sender {
+            font-weight: bold;
+            text-decoration: underline;
+            text-align: right;
+        }
+
+        .message-content {
+            text-align: right;
+            color: lighten(black, 70%);
+            padding-right: 6px;
+            font-size: 80%;
+        }
+
+    }
+
+    .left-container {
+        .sender {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .message-content {
+            color: lighten(black, 70%);
+            padding-left: 6px;
+            text-align: justify;
+            font-size: 80%;
+        }
+
+    }
+
+}

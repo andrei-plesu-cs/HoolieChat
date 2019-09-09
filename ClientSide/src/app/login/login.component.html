@@ -1,0 +1,42 @@
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="login-box">
+                <form class="form-inline" #f="ngForm" (ngSubmit)='sendTheForm(f)'>
+                    <input 
+                        type="text"
+                        id="username"
+                        name="username"
+                        autocomplete="off"
+                        placeholder="Choose username"
+                        class="form-control form-control-lg"
+                        ngModel />
+                    <button type="submit" class="btn btn-lg btn-primary">Begin</button>
+                </form>
+                <small>The username will be used to identify you in the network</small>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="title">
+                <h1>Welcome to <span>HoolieChat</span></h1>
+                <h4>The new industry standard for chatting applications</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore repellendus delectus dignissimos! Quia, ipsum nihil vel quibusdam saepe, dignissimos molestias eum dolore incidunt cum, porro dolorem totam quis consequatur natus repudiandae. Eligendi placeat accusantium similique quidem sed odio facere, quibusdam, asperiores consequatur officia, aperiam autem nobis delectus assumenda non earum!</p>
+    <div class="row text-center">
+        <div class="col-lg 4">
+            <i class="fab fa-facebook"></i>
+        </div>
+        <div class="col-lg-4">
+            <i class="fab fa-instagram"></i>
+        </div>
+        <div class="col-lg-4">
+            <i class="fab fa-twitter-square"></i>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,238 @@
+
+<!-- The navbar section -->
+<div class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a routerLink="/login" class="navbar-brand">HoolieChat</a>
+
+        <!-- info about the current user -->
+        <div class="navbar-user-info mr-auto">
+            <img src="../../assets/images/profile-pic.jpg" alt="Profile pic" class="rounded-circle">
+        </div>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a href="#" class="nav-link disabled" style="font-weight: bold; margin-right: 20px;">{{username}}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/login" class="nav-link">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-lg-4 column-height">
+            <div class="conversations-area">
+                <div class="people-area">
+                    <span [ngClass]="{'active-span': isPeopleSelected}" (click)="isPeopleSelected = true; showButtons = []">Online Users</span>
+                    <span [ngClass]="{'active-span': !isPeopleSelected}" (click)="isPeopleSelected = false; showButtons = []">Conversations
+                        <span class="badge my-badge" *ngIf="totalNewMessages > 0">{{totalNewMessages}}</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Online users section -->
+            <div class="users-area" *ngIf="isPeopleSelected">
+                <div class="random-element" *ngIf="users.length > 0">
+                    <div class="user-element" *ngFor="let user of users; let i=index">
+                        <div class="row">
+                            <div class="col-lg-2 text-right">
+                                <img src="../../assets/images/profile-pic.jpg" alt="Profile pic" class="rounded-circle"/>
+                            </div>
+                            <div class="col-lg-10 text-left" (click)="clickButton(i)">
+                                <div class="user-info">
+                                    <span>{{user.username}}</span>
+                                    <br />
+                                    <small style="color: gray;">
+                                        <i class="far fa-hourglass" style="margin-right: 8px;"></i>
+                                        {{formatDate(user.username)}}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-10 text-left">
+                                <div class="buttons-section" *ngIf="showButtons[i]">
+                                    <button type="button" class="btn btn-sm add" (click)="sendRequest(user)">Send Request</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-user-info" *ngIf="users.length === 0">
+                    <span>There are no users online right now... it has to be their fault not ours</span>
+                </div>
+
+            </div>
+
+            <!-- Conversations section -->
+            <div class="conversation-area" *ngIf="!isPeopleSelected">
+                <div class="random-div" *ngIf="conversations.length > 0">
+                    <!-- People -->
+                    <div class="inner-group" *ngIf="getConv('single_user').length > 0">
+                        <div class="no-user-info" style="margin-bottom: 15px">
+                            <span>Individual users</span>
+                        </div>
+                        <div class="user-element" *ngFor="let conversation of getConv('single_user'); let i=index">
+                            <div class="row">
+                                <div class="col-lg-2 text-right">
+                                    <img src="../../assets/images/profile-pic.jpg" alt="Profile pic" class="rounded-circle"/>
+                                </div>
+                                <div class="col-lg-10 text-left" (click)="clickButton(i)">
+                                    <div class="user-info">
+                                        <span>{{conversation.users.username}}
+                                            <span class="badge my-badge" *ngIf="newMessagesCount[conversation.users.username]">
+                                                {{ newMessagesCount[conversation.users.username] }}
+                                            </span>
+                                        </span>
+                                        <br />
+                                        <small style="color: gray;">
+                                            <i class="far fa-hourglass" style="margin-right: 8px;"></i>
+                                            {{formatDate(conversation.users.username)}}
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-10 text-left">
+                                    <div class="buttons-section" *ngIf="showButtons[i]">
+                                        <button type="button" class="btn btn-sm message" (click)="messageUsers(conversation)">Message</button>
+                                        <button type="button" class="btn btn-sm remove" (click)="exitConversations(conversation)">Exit conv</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Open groups -->
+                    <div class="inner-group" *ngIf="getConv('open_groups').length > 0">
+                        <div class="no-user-info">
+                            <span>Open groups</span>
+                        </div>
+                        <div class="user-element" *ngFor="let conversation of getConv('open_groups'); let i=index">
+                            <div class="row">
+                                <div class="col-lg-2 text-right">
+                                    <img src="../../assets/images/profile-pic.jpg" alt="Profile pic" class="rounded-circle"/>
+                                </div>
+                                <div class="col-lg-10 text-left">
+                                    <div class="user-info" (click)="clickButton(i)">
+                                        <span>{{conversation.users.username}}</span>
+                                        <br />
+                                        <small style="color: gray;">
+                                            <i class="far fa-hourglass" style="margin-right: 8px;"></i>
+                                            Connected 12 minutes ago
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-10 text-left">
+                                    <div class="buttons-section" *ngIf="showButtons[i]">
+                                        <button type="button" class="btn btn-sm message" (click)="messageUsers(conversation)">Message</button>
+                                        <button type="button" class="btn btn-sm remove" (click)="exitConversations(conversation)">Exit conv</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Groups -->
+                    <div class="inner-group" *ngIf="getConv('groups').length > 0">
+                        <div class="no-user-info">
+                            <span>Groups</span>
+                        </div>
+                        <div class="user-element" *ngFor="let conversation of getConv('groups'); let i=index">
+                            <div class="row">
+                                <div class="col-lg-2 text-right">
+                                    <img src="../../assets/images/profile-pic.jpg" alt="Profile pic" class="rounded-circle"/>
+                                </div>
+                                <div class="col-lg-10 text-left">
+                                    <div class="user-info" (click)="clickButton(i)">
+                                        <span>{{conversation.users.username}}</span>
+                                        <br />
+                                        <small style="color: gray;">
+                                            <i class="far fa-hourglass" style="margin-right: 8px;"></i>
+                                            Connected 12 minutes ago
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-10 text-left">
+                                    <div class="buttons-section" *ngIf="showButtons[i]">
+                                        <button type="button" class="btn btn-sm message" (click)="messageUsers(conversation)">Message</button>
+                                        <button type="button" class="btn btn-sm remove" (click)="exitConversations(conversation)">Exit conv</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="no-user-info" *ngIf="conversations.length === 0">
+                    <span>You have no conversations ready yet... try interacting with the app first</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Message exchange area -->
+        <div class="col-lg-5 column-height message-column">
+            <div class="no-info-text text-center" *ngIf="convSelected === false" >
+                <span style="display: block; font-size: 40px;"><i class="fas fa-user"></i></span>
+                <span>Try selecting a conversation please</span><br />
+                <span style="font-size: 65%; color: lightskyblue;">If you want to exchange messages...</span>
+            </div>
+            <div style="height: 100%; width: 100%" *ngIf="convSelected === true">
+                <app-messages style="height: 100%; width: 100%;" [convInfo]="convInfo" [newMessages]="messages" [user]="username"
+                    (saveMessage)="saveTheMessage($event)"></app-messages>
+            </div>
+        </div>
+
+        <!-- Notifications area right here -->
+        <div class="col-lg-3 column-height">
+            <div class="notifications-area">
+                <div class="people-area">
+                    <span>Notifications</span>
+                    <button 
+                        type="button" 
+                        (click)="notifications = []; displatButton = []" 
+                        class="btn btn-sm btn-link" 
+                        *ngIf="notifications.length > 0">Clear</button>
+                </div>
+            </div>
+
+            <div *ngIf="notifications.length > 0">
+                <div class="notification-element" *ngFor="let notification of notifications; let i=index">
+                    <span style="font-size: 95%;"><strong>{{notification.user.username}}</strong> {{ notification.message }}</span>
+
+                    <!-- <div class="success-buttons align-buttons" *ngIf="notification.type === 'response_success'">
+                        <button type="button" class="btn btn-sm conversate">Conversate</button>
+                    </div> -->
+                    <div class="request-buttons align-buttons" *ngIf="notification.type === 'personal_request' && !displayButton[i]">
+                        <button type="button" class="btn btn-sm add" (click)="sendResponse(notification.user, true, i)">Add</button>
+                        <button type="button" class="btn btn-sm reject" (click)="sendResponse(notification.user, false, i)">Reject</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="no-user-info" *ngIf="notifications.length === 0">
+                <span>Do something if you want notifications...</span>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,248 @@
+.navbar {
+    background-color: #0486db;
+    color: #fff;
+
+    a.navbar-brand {
+        font-weight: bold;
+        color: #fff;
+    }
+
+}
+
+.navbar-user-info {
+    margin-left: 30px;
+
+    img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+a.nav-link {
+    color: #fff !important;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+a.nav-link:hover {
+    font-weight: bold;
+}
+
+//Conversations area for the users
+.conversations-area {
+
+    //border: 1px solid red;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .people-area {
+
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        font-size: 110%;
+
+        span {
+            color: #05acd3;
+        }
+
+        span:hover {
+            color: #0486db;
+            border-color: #0486db !important;
+            cursor: pointer;
+        }
+
+        span.active-span {
+            border-bottom: 2px solid #05acd3;
+        }
+    }
+
+}
+
+//User information area
+.users-area {
+
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+
+    .user-element {
+        img {
+            width: 45px;
+            height: 45px;
+        }
+
+        margin-bottom: 15px;
+
+    }
+}
+
+.no-user-info {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    font-size: 85%;
+    text-align: justify;
+    color: #05acd3;
+}
+
+.buttons-section {
+    button.add {
+        margin-right: 15px !important;
+        border: 1px solid limegreen;
+        border-radius: 0;
+        padding: 4px;
+        color: limegreen;
+    }
+
+    button.remove {
+        color: lightcoral;
+        border-radius: 0;
+        padding: 4px;
+        border: 1px solid lightcoral;
+    }
+
+    button.add:hover {
+        color: green;
+        border-color: green !important;
+    }
+
+    button.remove:hover {
+        color: red;
+        border-color: red !important;
+    }
+}
+
+//Conversations area
+.conversation-area {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+
+    .inner-group {
+        img {
+            width: 45px;
+            height: 45px;
+        }
+
+        button.message {
+            border-radius: 0;
+            border-color: #0486db;
+            color: #0486db;
+            margin-right: 15px !important;
+            padding: 4px;
+        }
+
+    }
+
+}
+
+.my-badge {
+    border-radius: 4px;
+    background-color: #0486db;
+    color: #fff !important;
+    padding: 5px;
+}
+
+//Notifications area
+.notifications-area {
+
+    //border: 1px solid red;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .people-area {
+
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        font-size: 110%;
+
+        span {
+            color: #05acd3;
+        }
+    }
+
+}
+
+.notification-element {
+
+    margin-bottom: 20px;
+
+    span {
+        color: black;
+        text-align: justify;
+
+        strong {
+            color: #05acd3;
+        }
+    }
+
+    .align-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    button {
+        padding: 2px 8px;
+        border-radius: 0;
+    }
+
+    button.add {
+        color: limegreen;
+        border-color: limegreen;
+    }
+
+    button.add:hover {
+        color: green;
+        border-color: green !important;
+    }
+
+    button.reject {
+        color: lightcoral;
+        border-color: lightcoral;
+    }
+
+    button.reject:hover {
+        color: red;
+        border-color: red !important;
+    }
+
+    button.conversate {
+        color: #0486db;
+        border-color: #0486db;
+    }
+
+    button.conversate:hover {
+        color: darken(#0486db, 13);
+        border-color: darken(#0486db, 13) !important;
+    }
+
+}
+
+//Message exchange area
+.column-height {
+    height: 70vh;
+}
+
+.message-column {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.no-info-text {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    color: #0486db;
+    font-size: 115%;
+}

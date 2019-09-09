@@ -1,0 +1,19 @@
+{
+  "name": "hoolie_app",
+  "version": "1.0.0",
+  "description": "Hoolie App from Sillicon Valley sitcom",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Plesoianu Andrei-Bogdan",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  }
+}

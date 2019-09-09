@@ -1,0 +1,48 @@
+
+<div class="main-messages">
+    <div class="header">
+        <div class="row">
+            <div class="col-lg-3 text-right">
+                <img src="../../assets/images/profile-pic.jpg" alt="Profile picture" class="rounded-circle">
+            </div>
+            <div class="col-lg-9 my-col">
+                <div>
+                    <p>{{formatNames()}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="no-messages" *ngIf="messages.length === 0">
+            <p>Say hi to the others/others please :D</p>
+        </div>
+
+        <div class="messages" *ngIf="messages.length > 0">
+            <div class="message-component" *ngFor="let message of messages; let i=index">
+                <div class="inner-container" [ngClass]="{'right-container': message.username === user, 'left-container': message.username !== user}">
+                    <div class="sender">
+                        {{ formatUsername(message) }}
+                    </div>
+                    <div class="message-content">
+                        {{message.message}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-area" style="margin-left: 10%; margin-right: 10%; width: 80%; padding: 0px">
+            <div class="form-inline" style="width: 100% !important">
+                <input 
+                    type="text"
+                    placeholder="Write something"
+                    class="form-control form-control-md"
+                    autocomplete="off"
+                    style="border-radius: 0; width: 80%;"
+                    [(ngModel)]="inputField"
+                    >
+                <button type="button" class="btn btn-primary btn-md" style="border-radius: 0; width: 20%;" (click)="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+</div>

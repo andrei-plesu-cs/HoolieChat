@@ -1,0 +1,66 @@
+
+.jumbotron {
+    width: 100vw;
+    height: 50vh;
+    top: 0;
+    left: 0;
+    background-image: url("../../assets/images/login-cover.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.jumbotron:hover {
+    box-shadow: inset 3px 3px 68px 0px rgba(0,0,0,0.75);
+}
+
+.title {
+    color: #fff;
+    text-align: center;
+}
+
+.title-span {
+    font-weight: bold;
+}
+
+.login-box {
+    padding: 16px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    input {
+        border-radius: 0;
+        margin-right: 7px;
+    }
+
+    button {
+        font-weight: bold;
+        border-radius: 0;
+    }
+
+    small {
+        color: #fff;
+    }
+
+}
+
+.container {
+    color: lightskyblue;
+    margin-top: 50px;
+    text-align: center;
+
+    .row i {
+        margin-top: 20px;
+        font-size: 40px;
+    }
+
+    .row i:hover {
+        font-weight: bold;
+        color: blue;
+        cursor: pointer;
+    }
+
+}

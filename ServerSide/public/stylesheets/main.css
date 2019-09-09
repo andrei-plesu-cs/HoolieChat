@@ -1,0 +1,142 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+    background-color: #0486db !important;
+    color: #fff;
+}
+
+.navbar-user-info {
+    margin-left: 30px;
+}
+
+.navbar-user-info img {
+    width: 45px;
+    height: 45px;
+}
+
+.navbar a.navbar-brand {
+    font-weight: bold;
+    color: #fff;
+}
+
+a.nav-link {
+    color: #fff !important;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+a.nav-link:hover {
+    font-weight: bold;
+}
+
+/* Conversations area  */
+.conversations-area {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.people-header {
+    font-size: 115%;
+    color: #05acd3;
+}
+
+.people-header span {
+    margin-right: 20px;
+}
+
+.people-header span:hover {
+    color: #0486db;
+    cursor: pointer;
+}
+
+.people-header span.active {
+    border-bottom: 2px solid #05acd3;
+}
+
+.main-conv-header {
+    height: 40vw;
+    border: 1px solid #05acd3;
+}
+
+/* Profile viewing area */
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile .user-info {
+    display: inline-block;
+}
+
+img {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+}
+
+.under-section {
+    margin-top: 30px;
+}
+
+.buttons-section {
+    display: none;
+    flex-direction: row;
+    justify-content: start;
+    width: 75%;
+    margin-left: 25%;
+}
+
+button.add {
+    margin-right: 13px !important;
+    border: 1px solid limegreen;
+    border-radius: 0;
+    padding: 4px;
+    color: limegreen;
+}
+
+button.add:hover {
+    color: green;
+    border-color: green;
+}
+
+button.remove {
+    color: lightcoral;
+    border-radius: 0;
+    padding: 4px;
+    border: 1px solid lightcoral;
+}
+
+button.remove:hover {
+    color: red;
+    border-color: red;
+}
+
+.invisible-goodie {
+    display: flex !important;
+}
+
+.show-info {
+    padding-bottom: 20px;
+    height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#no_user {
+    color: #05acd3;
+    font-size: 95%;
+}
+
+.my-section {
+    width: 50%;
+    margin-left: 15%;
+}
+
+/* Messages area */
